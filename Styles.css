@@ -4,8 +4,79 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: "Noto Sans", sans-serif;
+  color: #010400;
 }
 
 h1 {
-  font-family: "Noto Sans", sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  margin: 0px;
+  padding: 0px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+h4 {
+  font-size: 16px;
+  color: #7c7c7c;
+  font-weight: 700;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  font-size: 14px;
+  color: #7c7c7c;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+}
+
+label {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a {
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+button {
+  background-color: #5936cd;
+  height: 56px;
+  width: 432px;
+  border-radius: 12px;
+  color: #f4f4f9;
+  font-weight: bold;
+  font-size: 16px;
+  border-color: #5936cd;
+  border-width: 2px;
+  border-style: solid;
+}
+
+button.small {
+  background-color: #f4f4f9;
+  color: #010400;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 90px;
+  height: 36px;
+}
+
+input {
 }
