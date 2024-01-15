@@ -79,4 +79,82 @@ button.small {
 }
 
 input {
+  width: 100%;
+  background-color: #f4f4f9;
+  height: 48px;
+  border-color: #06bee1;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 8px;
+  color: #010400;
+  font-size: 16px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt {
+  margin-top: 16px;
+}
+
+.mt.larger {
+  margin-top: 32px;
+}
+
+.mt.large {
+  margin-top: 24px;
+}
+
+.mt.small {
+  margin-top: 12px;
+}
+
+.mt.smaller {
+  margin-top: 6px;
+}
+
+.logo {
+  width: 88px;
+  height: auto;
+}
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5936cd;
+}
+
+.auth-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 480px;
+  height: auto;
+  border-radius: 24px;
+  background-color: #f4f4f9;
+  min-height: 440px;
+}
+
+.auth-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
 }
