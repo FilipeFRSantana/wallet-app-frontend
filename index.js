@@ -1,7 +1,7 @@
 const validateUser = async (email) => {
   try {
     const result = await fetch(
-      `https://mp-wallet-app-api.herokuapp.com/users?=${email}`
+      `https://mp-wallet-app-api.herokuapp.com/users?email=${email}`
     );
     const user = await result.json();
     return user;
@@ -17,7 +17,6 @@ const onClickLogin = async () => {
     return;
   }
   const result = await validateUser(email);
-  console.log(result);
   if (result.error) {
     alert("Falha ao validar e-mail.");
     return;

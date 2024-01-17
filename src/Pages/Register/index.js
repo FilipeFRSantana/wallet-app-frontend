@@ -12,7 +12,7 @@ const onCallRegister = async (email, name) => {
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
-          "content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       }
