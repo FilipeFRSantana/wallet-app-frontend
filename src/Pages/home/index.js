@@ -17,13 +17,13 @@ const onLoadUserInfo = () => {
   logoutElement.appendChild(logoutText);
   navbarUserInfo.appendChild(logoutElement);
 
-  // add user first latter inside avatar
+  // add user first letter inside avatar
   const nameElement = document.createElement("h3");
   const nameText = document.createTextNode(name.charAt(0));
   nameElement.appendChild(nameText);
   navbarUserAvatar.appendChild(nameElement);
 };
 
-window.onLoad = () => {
+window.onload = () => {
   onLoadUserInfo();
 };
