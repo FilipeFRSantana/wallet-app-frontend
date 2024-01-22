@@ -79,6 +79,15 @@ button.small {
   height: 36px;
 }
 
+button.small2 {
+  background-color: #ffffff;
+  color: #010400;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 90px;
+  height: 36px;
+}
+
 input {
   width: 100%;
   background-color: #f4f4f9;
