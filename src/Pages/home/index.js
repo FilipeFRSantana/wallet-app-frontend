@@ -1,5 +1,6 @@
 const renderFinancesList = (data) => {
   const table = document.getElementById("finances-table");
+  table.innerHTML = "";
 
   data.map((item) => {
     const tableRow = document.createElement("tr");
@@ -61,14 +62,29 @@ const renderFinancesElements = (data) => {
 
   // render total items
   const financeCard1 = document.getElementById("finance-card-1");
+  financeCard1.innerHTML = "";
+
+  const totalSubText = document.createTextNode("Total de lançamentos");
+  const totalSubTextElement = document.createElement("h3");
+  totalSubTextElement.appendChild(totalSubText);
+  financeCard1.appendChild(totalSubTextElement);
+
   const totalText = document.createTextNode(totalItems);
   const totalElement = document.createElement("h1");
+  totalElement.id = "total-element";
   totalElement.className = "mt smaller";
   totalElement.appendChild(totalText);
   financeCard1.appendChild(totalElement);
 
   // render revenues
   const financeCard2 = document.getElementById("finance-card-2");
+  financeCard2.innerHTML = "";
+
+  const revenueSubText = document.createTextNode("Receitas");
+  const revenueSubTextElement = document.createElement("h3");
+  revenueSubTextElement.appendChild(revenueSubText);
+  financeCard2.appendChild(revenueSubTextElement);
+
   const revenueText = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -76,12 +92,20 @@ const renderFinancesElements = (data) => {
     }).format(revenues)
   );
   const revenuesTextElement = document.createElement("h1");
+  revenuesTextElement.id = "revenue-element";
   revenuesTextElement.className = "mt smaller";
   revenuesTextElement.appendChild(revenueText);
   financeCard2.appendChild(revenuesTextElement);
 
   // render expenses
   const financeCard3 = document.getElementById("finance-card-3");
+  financeCard3.innerHTML = "";
+
+  const expensesSubText = document.createTextNode("Despesas");
+  const expensesSubTextElement = document.createElement("h3");
+  expensesSubTextElement.appendChild(expensesSubText);
+  financeCard3.appendChild(expensesSubTextElement);
+
   const expensesText = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -89,12 +113,20 @@ const renderFinancesElements = (data) => {
     }).format(expenses)
   );
   const expensesTextElement = document.createElement("h1");
+  expensesTextElement.id = "expenses-element";
   expensesTextElement.className = "mt smaller";
   expensesTextElement.appendChild(expensesText);
   financeCard3.appendChild(expensesTextElement);
 
   // render balance
   const financeCard4 = document.getElementById("finance-card-4");
+  financeCard4.innerHTML = "";
+
+  const balanceSubText = document.createTextNode("Balanço");
+  const balanceSubTextElement = document.createElement("h3");
+  balanceSubTextElement.appendChild(balanceSubText);
+  financeCard4.appendChild(balanceSubTextElement);
+
   const balancetext = document.createTextNode(
     new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -102,6 +134,7 @@ const renderFinancesElements = (data) => {
     }).format(totalValue)
   );
   const balanceTextElement = document.createElement("h1");
+  balanceTextElement.id = "balance-element";
   balanceTextElement.className = "mt smaller";
   balanceTextElement.style.color = "#5936cd";
   balanceTextElement.appendChild(balancetext);
@@ -169,8 +202,8 @@ const onLoadCategories = async () => {
       option.id = `category_${category.id}`;
       option.value = category.id;
       option.appendChild(categoryText);
-      categoriesSelect.append(option)
-    })
+      categoriesSelect.append(option);
+    });
   } catch (error) {
     alert("Error em encontrar categoria");
   }
@@ -186,8 +219,65 @@ const onCloseModal = () => {
   modal.style.display = "none";
 };
 
+const onCallAddFinance = async (data) => {
+  try {
+    const email = localStorage.getItem("@walletApp:userEmail");
+
+    const response = await fetch(
+      "https://mp-wallet-app-api.herokuapp.com/finances",
+      {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          email: email,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    return { error };
+  }
+};
+
+const onCreateFinancesRealese = async (target) => {
+  try {
+    const title = target[0].value;
+    const value = Number(target[1].value);
+    const date = target[2].value;
+    const category = Number(target[3].value);
+    const result = await onCallAddFinance({
+      title,
+      value,
+      date,
+      category_id: category,
+    });
+
+    if (result.error) {
+      alert("Erro ao adicionar novo dado financeiro.");
+      return;
+    }
+    onCloseModal();
+    onLoadFinancesData();
+  } catch (error) {
+    alert("Erro ao adicionar novo dado financeiro.");
+  }
+};
+
 window.onload = () => {
   onLoadUserInfo();
   onLoadFinancesData();
   onLoadCategories();
+
+  const form = document.getElementById("form-finance-realese");
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    console.log({ target: event.target });
+    onCreateFinancesRealese(event.target);
+  };
 };

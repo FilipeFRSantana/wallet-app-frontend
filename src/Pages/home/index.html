@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Wallet App Home</title>
 
     <link rel="stylesheet" href="../../../Styles.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="index.js"></script>
-
   </head>
   <body>
     <div class="home-content-container">
@@ -26,18 +24,10 @@
         </div>
       </div>
       <div class="finance-card-container">
-        <div id="finance-card-1" class="finance-card">
-          <h3>Total de despesas</h3>
-        </div>
-        <div id="finance-card-2" class="finance-card">
-          <h3>Receitas</h3>
-        </div>
-        <div id="finance-card-3" class="finance-card">
-          <h3>Despesas</h3>
-        </div>
-        <div id="finance-card-4" class="finance-card">
-          <h3>Balanço</h3>
-        </div>
+        <div id="finance-card-1" class="finance-card"></div>
+        <div id="finance-card-2" class="finance-card"></div>
+        <div id="finance-card-3" class="finance-card"></div>
+        <div id="finance-card-4" class="finance-card"></div>
       </div>
       <div class="table-container">
         <div class="table-content-container">
@@ -63,7 +53,7 @@
           <h3>Adicionar Lançamento</h3>
           <button onclick="onCloseModal()" class="small">Fechar</button>
         </div>
-        <form id="form-register" class="mt">
+        <form id="form-finance-realese" class="mt">
           <label for="input-title">Titulo</label>
           <input
             placeholder="Ex: Conta de Água"
@@ -79,7 +69,8 @@
             class="mt smaller"
             id="input-value"
             name="input-value"
-            type="text"
+            type="number"
+            step="any"
             required
           />
           <label class="mt" for="input-date">Data</label>
