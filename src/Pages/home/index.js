@@ -31,6 +31,8 @@ const renderFinancesList = (data) => {
   actionElement.appendChild(actionText);
   tableHeader.appendChild(actionElement);
 
+  table.appendChild(tableHeader);
+
   data.map((item) => {
     const tableRow = document.createElement("tr");
     tableRow.className = "mt smaller";

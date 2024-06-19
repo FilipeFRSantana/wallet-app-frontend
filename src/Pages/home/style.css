@@ -7,6 +7,10 @@ th {
   color: #7c7c7c;
 }
 
+tr {
+  height: 32px;
+}
+
 th.right {
   text-align: right;
 }
@@ -19,7 +23,7 @@ td {
   color: #7c7c7c;
 }
 
-td.right{
+td.right {
   text-align: right;
 }
 
@@ -139,7 +143,7 @@ td.center {
   right: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(1,4,0,0.2);
+  background-color: rgba(1, 4, 0, 0.2);
 }
 
 .modal-content {
